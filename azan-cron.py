@@ -9,7 +9,7 @@ def playAzaan(azaan):
     if azaan != "fajr":
         files = next(os.walk("./assets/audio/"))
         file_count = len(files[2]) - 1
-        number = random.randint(1, file_count)
+        number = str(random.randint(1, file_count))
         filePath = './assets/audio/azan-' + number + '.mp3'
 
     pygame.mixer.init()
@@ -45,6 +45,7 @@ def getAzaanNameAndTime():
             azaanName = key
 
     return (azaanName, azaanSleepInterval)
+
 
 while True:
     nameAndTime = getAzaanNameAndTime()
