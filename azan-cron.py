@@ -38,16 +38,16 @@ def getAzaanNameAndTime():
 
     for key in adhanTimes:
         d = adhanTimes[key] - datetime.now() 
-        nextAzaanTime = d.total_seconds()
+        nextAzaanTime = int(d.total_seconds())
     
-        if nextAzaanTime < azaanSleepInterval:
+        if nextAzaanTime < azaanSleepInterval and nextAzaanTime > 0:
             azaanSleepInterval = nextAzaanTime
             azaanName = key
 
     return (azaanName, azaanSleepInterval)
 
-
 while True:
     nameAndTime = getAzaanNameAndTime()
+    print(nameAndTime)
     time.sleep(nameAndTime[1])
     playAzaan(nameAndTime[0])
