@@ -1,7 +1,7 @@
 from datetime import datetime, time
 from adhan import adhan
 from adhan.methods import ISNA, ASR_HANAFI
-from playsound import playsound
+import pygame
 
 city_coordinates = (37.3441254,-121.9806518)
 timezone_offset = -8
@@ -20,4 +20,8 @@ del adhan_times["shuruq"]
 print (adhan_times)
 print (datetime.now())
 
-#playsound('./assets/audio/azan.mp3')
+pygame.mixer.init()
+pygame.mixer.music.load('./assets/audio/azan.mp3')
+pygame.mixer.music.play()
+while pygame.mixer.music.get_busy() == True:
+    continue
