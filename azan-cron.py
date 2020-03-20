@@ -1,6 +1,6 @@
 from datetime import datetime
 from adhan import adhan
-from adhan.methods import ISNA, ASR_STANDARD
+from adhan.methods import ISNA, ASR_HANAFI
 import sys, random, time, pygame, os, os.path
 
 def playAzaan(azaan):
@@ -23,7 +23,7 @@ def getAzaanNameAndTime():
     offset = -7
     params = {}
     params.update(ISNA)
-    params.update(ASR_STANDARD)
+    params.update(ASR_HANAFI)
 
     adhanTimes = adhan(
         day=datetime.today(),
