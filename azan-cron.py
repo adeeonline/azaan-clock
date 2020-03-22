@@ -4,13 +4,16 @@ from adhan.methods import ISNA, ASR_HANAFI
 import sys, random, time, pygame, os, os.path
 
 def playAzaan(azaan):
-    filePath = './assets/audio/fajr/azan-fajr.mp3'
+    dirname = os.path.dirname(__file__)
+    assetsDir = 'assets/audio/'
+    basePath = os.path.join(dirname, assetsDir)
+    filePath = basePath + 'fajr/azan-fajr.mp3'
     
-    if azaan != "fajr":
-        files = next(os.walk("./assets/audio/"))
-        file_count = len(files[2]) - 1
-        number = str(random.randint(1, file_count))
-        filePath = './assets/audio/azan-' + number + '.mp3'
+    if azaan != "fajr":  
+        files = next(os.walk(basePath))
+        fileCount = len(files[2]) - 1
+        number = str(random.randint(1, fileCount))
+        filePath = basePath + 'azan-' + number + '.mp3'
 
     pygame.mixer.init()
     pygame.mixer.music.load(filePath)
