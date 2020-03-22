@@ -1,0 +1,13 @@
+[Unit]
+Description=Run Azaan clock as a Service
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=pi
+ExecStart=python ~/azaan-clock/azan-cron.py
+
+[Install]
+WantedBy=multi-user.target
