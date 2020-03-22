@@ -7,7 +7,7 @@ Type=simple
 Restart=always
 RestartSec=1
 User=pi
-ExecStart=python ~/azaan-clock/utils/bluetooth-restarter.py
+ExecStart=python /home/pi/azaan-clock/utils/bluetooth-restarter.py
 
 [Install]
 WantedBy=multi-user.target

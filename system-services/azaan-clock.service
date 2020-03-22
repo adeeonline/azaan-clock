@@ -7,7 +7,7 @@ Type=simple
 Restart=always
 RestartSec=1
 User=pi
-ExecStart=python ~/azaan-clock/azan-cron.py
+ExecStart=python /home/pi/azaan-clock/azan-cron.py
 
 [Install]
 WantedBy=multi-user.target
