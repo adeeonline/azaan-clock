@@ -1,13 +1,12 @@
 [Unit]
 Description=Reboot whole OS if Bluetooth is not available
-StartLimitIntervalSec=0
 
 [Service]
-Type=simple
+ExecStart=python -u /home/pi/azaan-clock/utils/bluetooth-util.py
+StandardOutput=inherit
+StandardError=inherit
 Restart=always
-RestartSec=1
 User=pi
-ExecStart=python /home/pi/azaan-clock/utils/bluetooth-util.py
 
 [Install]
 WantedBy=multi-user.target
