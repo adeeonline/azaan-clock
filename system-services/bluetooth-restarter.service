@@ -2,6 +2,7 @@
 Description=Reboot whole OS if Bluetooth is not available
 
 [Service]
+WorkingDirectory=~/azaan-clock
 ExecStart=python -u /home/pi/azaan-clock/utils/bluetooth-util.py
 StandardOutput=inherit
 StandardError=inherit

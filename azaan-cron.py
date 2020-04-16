@@ -1,7 +1,7 @@
-import json
+import json, os
 from src.AzaanClock import AzaanClock
 
-with open('config.json') as jsonFile:
+with open(os.path.dirname(__file__) + '/config.json') as jsonFile:
     configs = json.load(jsonFile)
 
 azaanClock = AzaanClock(
