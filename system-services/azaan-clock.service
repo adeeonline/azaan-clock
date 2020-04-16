@@ -2,7 +2,6 @@
 Description=Run Azaan clock as a Service
 
 [Service]
-WorkingDirectory=~/azaan-clock
 ExecStart=python -u /home/pi/azaan-clock/azaan-cron.py
 StandardOutput=inherit
 StandardError=inherit
