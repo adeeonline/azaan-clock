@@ -10,5 +10,4 @@ azaanClock = AzaanClock(
     configs["coordinates"]
 )
 
-# azaanClock.start()
-azaanClock.playAzaan("")
+azaanClock.start()
