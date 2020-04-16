@@ -9,35 +9,39 @@
 ### Installation
 
 1. Clone this repository
-2. Run `pip install adhan`
-3. Run `python azan-cron.py`
+2. Run `pip install -r requirements.txt`
+3. Open `config.json` and fill in details
+4. Run `python azaan-cron.py`
 
-### Options
+### Configure config.json
 
-Azaan Times are calculated based on various options. Here are some ways on how to configure them:
+Azaan Times are calculated based on various options which you can change in `config.json`. Here are some ways on how to configure them:
 
-**Geo location Coordinates**
-You can change the current location coordinates by opening `azan-cron.py` file and change this line `coordinates = (37.3441254,-121.9806518)` to use your location coordinates.
-
+**coordinates**
+You can change the `lat` and `lng` in `config.json`
 *Default: `(37.3441254,-121.9806518)`*
 
-**Azan Time Calculation Method**
-Azan times are calculated based on some method there are various methods provided by the Adhan library I am using. You can change the caculation method by going to `azan-cron.py`
+**calculation-method**
+- isna
+- muslim-world-league
+- egypt
+- makkah
+- karachi
+- tehran
+- shia
 
-1. Import the method you want here `from adhan.methods import ISNA, ASR_HANAFI`
-2. Update these line with yoru methods 
-`params.update(ISNA)`
-`params.update(ASR_HANAFI)`
+*Default: `isna`*
 
-For all available options please visit the original library page here https://github.com/hayalasalah/adhan.py
+**asr-method**
+- standard
+- hanafi
 
-*Default: `ISNA` and `ASR_HANAFI`*
+*Default: `hanafi`*
 
-**Adding More Azan Sounds**
-You can add more Azan sounds. Goto `assets/audio` and add more Azan but make sure the file is in this format `azan-<increment-number>` E.g: `azan-1.mp3`
+### Adding More Azan Sounds
+You can add more Azan sounds by copying azaan sound files to `assets/audio` directory for regular azaan or `assets/audio/fajr` for fajr azaan.
 
 *Default: `1 Fajr, 2 Regular`*
-
 
 ### Credits
 I used this library https://github.com/hayalasalah/adhan.py for calculating azan times.
