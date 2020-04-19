@@ -47,7 +47,6 @@ class AzaanClock:
         for (_, _, filenames) in os.walk(path):
             files.extend(filenames)
             break
-        print(files)
         fileCount = len(files) - 1
         random.seed(time.clock())
         index = random.randint(0, fileCount)
@@ -93,18 +92,22 @@ class AzaanClock:
         del adhanTimes["shuruq"]
         return self.getCurrentAzaan(adhanTimes)
 
+    
+    def getAzaanTimes(self, date):
+        nameAndTime = self.getAzaanNameAndTime(date)
+            
+        if nameAndTime[0] == "":
+            date = date + datetime.timedelta(days = 1)
+            nameAndTime = self.getAzaanNameAndTime(date)
+        
+        return nameAndTime
+
 
     def start(self):
         while True:    
             date = dt.today()
-            nameAndTime = self.getAzaanNameAndTime(date)
-            
-            if nameAndTime[0] == "":
-                date = date + datetime.timedelta(days = 1)
-                nameAndTime = self.getAzaanNameAndTime(date)
-            
+            nameAndTime = self.getAzaanTimes(date)
             print(nameAndTime)
-
             time.sleep(nameAndTime[1])
             self.playAzaan(nameAndTime[0])
 
