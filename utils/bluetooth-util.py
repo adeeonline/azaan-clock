@@ -1,5 +1,8 @@
 import sys, time, os, json, datetime
 from datetime import datetime as dt
+PACKAGE_PARENT = '..'
+SCRIPT_DIR = os.path.dirname(os.path.realpath(os.path.join(os.getcwd(), os.path.expanduser(__file__))))
+sys.path.append(os.path.normpath(os.path.join(SCRIPT_DIR, PACKAGE_PARENT)))
 from src.AzaanClock import AzaanClock
 
 TIME_TO_RESTART_BLUETOOTH = 120
@@ -12,8 +15,11 @@ def bluetoothConnected():
     else:
         return False
 
+relPath = os.path.dirname(__file__)
+if (relPath != ""):
+    relPath = relPath + "/"
 
-with open(os.path.dirname(__file__) + '../config.json') as jsonFile:
+with open(relPath + '/../config.json') as jsonFile:
     configs = json.load(jsonFile)
 
 azaanClock = AzaanClock(
@@ -27,8 +33,8 @@ while True:
     nameAndTime = azaanClock.getAzaanTimes(date)
     sleepTime = nameAndTime[1] - TIME_TO_RESTART_BLUETOOTH
     
-    print('Current Time: ' + dt.now())
-    print('Sleeping For: ' + sleepTime)
+    print('Current Time: ' + dt.now().__str__())
+    print('Sleeping For: ' + sleepTime.__str__())
 
     time.sleep(sleepTime)
     
