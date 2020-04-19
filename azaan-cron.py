@@ -1,7 +1,11 @@
 import json, os
 from src.AzaanClock import AzaanClock
 
-with open(os.path.dirname(__file__) + '/config.json') as jsonFile:
+relPath = os.path.dirname(__file__)
+if (relPath != ""):
+    relPath = relPath + "/"
+
+with open(relPath + 'config.json') as jsonFile:
     configs = json.load(jsonFile)
 
 azaanClock = AzaanClock(
