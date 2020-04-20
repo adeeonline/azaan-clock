@@ -1,11 +1,4 @@
-import sys, time, os, json, datetime
-from datetime import datetime as dt
-PACKAGE_PARENT = '..'
-SCRIPT_DIR = os.path.dirname(os.path.realpath(os.path.join(os.getcwd(), os.path.expanduser(__file__))))
-sys.path.append(os.path.normpath(os.path.join(SCRIPT_DIR, PACKAGE_PARENT)))
-from src.AzaanClock import AzaanClock
-
-TIME_TO_RESTART_BLUETOOTH = 120
+import sys, time, os
 
 def bluetoothConnected():
     status = os.system('ls /dev/input/ | grep event0 > /dev/null')
@@ -15,28 +8,12 @@ def bluetoothConnected():
     else:
         return False
 
-relPath = os.path.dirname(__file__)
-if (relPath != ""):
-    relPath = relPath + "/"
-
-with open(relPath + '/../config.json') as jsonFile:
-    configs = json.load(jsonFile)
-
-azaanClock = AzaanClock(
-    configs["calculation-method"], 
-    configs["asr-method"],
-    configs["coordinates"]
-)
-
 while True:
-    date = dt.today()
-    nameAndTime = azaanClock.getAzaanTimes(date)
-    sleepTime = nameAndTime[1] - TIME_TO_RESTART_BLUETOOTH
-    
-    print('Current Time: ' + dt.now().__str__())
-    print('Sleeping For: ' + sleepTime.__str__())
-
-    time.sleep(sleepTime)
-    
-    print('Restarting Bluetooth service before Azaan')
-    os.system('sudo systemctl restart bluetooth.service')
+    time.sleep(300)
+    if bluetoothConnected() == False:
+        print('Bluetooth is not connected so restarting the service')
+        os.system('reboot')
+        print('Done service restarting') 
+        os.system('sudo systemctl restart bluetooth.service')
+        time.sleep(120)
+        os.system('sudo systemctl reboot')
