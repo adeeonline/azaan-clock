@@ -13,6 +13,12 @@
 3. Open `config.json` and fill in details
 4. Run `python azaan-cron.py`
 
+### Run Automatically at Boot (Optional)
+
+1. Run `crontab -e` and choose `nano` if asked for editor choice. 
+2. At the bottom of this file, add the line `@reboot python /home/azaan-clock/azaan-cron.py`, this will start the script on boot automatically.
+3. Press `Ctrl + X` to exit, press `Y` key, and then press enter to save the file. 
+
 ### Configure config.json
 
 Azaan Times are calculated based on various options which you can change in `config.json`. Here are some ways on how to configure them:
