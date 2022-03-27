@@ -48,9 +48,9 @@ class AzaanClock:
             files.extend(filenames)
             break
         fileCount = len(files) - 1
-        random.seed(time.clock())
-        index = random.randint(0, fileCount)
-        return files[index]
+        #random.seed(time.clock())
+        #index = random.randint(0, fileCount)
+        return files[0]
 
 
     def playSoundAtPath(self, path):
